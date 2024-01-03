@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "product-mgmt": {
+    "online-supermarket": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/product-mgmt",
+            "outputPath": "dist/online-supermarket",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "product-mgmt:build:production"
+              "browserTarget": "online-supermarket:build:production"
             },
             "development": {
-              "browserTarget": "product-mgmt:build:development"
+              "browserTarget": "online-supermarket:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "product-mgmt:build"
+            "browserTarget": "online-supermarket:build"
           }
         },
         "test": {
@@ -100,6 +100,6 @@
     }
   },
   "cli": {
-    "analytics": "7c51cfc9-3135-41fb-8f90-5ab06befbe6a"
+    "analytics": false
   }
 }

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-primary mt-2">
     <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">{{getTitle()}}</span>
+        <span class="navbar-brand mb-0 h1">{{getTitle()}} {{eventMessage}}</span>
         <form class="d-flex">
             <input 
                 [(ngModel)] = "listFilter"
@@ -49,7 +49,8 @@
                 <td>{{product.name | uppercase}}</td>
                 <td>{{product.price | currency:'EUR':'symbol':'1.2-2'}}</td>
                 <td>{{product.releaseDate | date:'mediumDate'}}</td>
-                <td>{{product.starRating}}</td>
+                <!--<td>{{product.starRating}}</td> -->
+                <td><app-star-rating [rating]="product.starRating" (notify)="onNotify($event)"></app-star-rating></td>
             </tr>
         </tbody>
     </table>

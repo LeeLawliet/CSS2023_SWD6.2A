@@ -18,6 +18,7 @@ export class ProductListComponent implements OnInit{
 
   ];
 
+  eventMessage: string = "";
   colour: string = "green";
   imageWidth: number = 40;
   imageMargin: number = 2;
@@ -87,4 +88,8 @@ export class ProductListComponent implements OnInit{
     );
   }
 
+  onNotify(message: string)
+  {
+    console.log(message);
+  }
 }
