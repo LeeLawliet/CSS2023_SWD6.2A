@@ -1,0 +1,25 @@
+<div class="table-responsive mt-3" *ngIf="drones!=null && drones.length>0">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Owner ID Card Number</th>
+                <th>Owner Last name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let drone of drones">
+                <td>{{drone.id}}</td>
+                <td>{{drone.brandName}}</td>
+                <td>{{drone.model}}</td>
+                <td>{{drone.ownerIdCardNumber}}</td>
+                <td>{{drone.ownerLastName}}</td>
+                <td><button class="btn btn-primary mt-2" [routerLink]="['/drones', drone.id]">View</button></td>
+                <td><button class="btn btn-success mt-2" (click)="updateDrone(drone.id, drone)">Update</button></td>
+                <td><button class="btn btn-danger  mt-2" (click)="deleteDrone(drone.id)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

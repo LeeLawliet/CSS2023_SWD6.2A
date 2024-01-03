@@ -1,0 +1,74 @@
+<div class="card-body" *ngIf="droneForm">
+    <form novalidate [formGroup]="droneForm" (ngSubmit)="submitForm()">
+        <fieldset>
+            <div class="form-group">
+                <label for="txtSerialNumber">Serial Number</label>
+                <input 
+                    type="text"
+                    class="form-control"
+                    formControlName = "serialNumber"
+                    id="txtSerialNumber"
+                    placeholder="Enter Serial Number">
+            </div>
+            <div class="form-group">
+                <label for="txtModelId">Model ID</label>
+                <input 
+                    type="text"
+                    class="form-control"
+                    formControlName = "modelId"
+                    id="txtModelId"
+                    placeholder="Enter Model ID">
+            </div>           
+            <div class="form-group">
+                <label for="txtOwnerIdCardNumber">Owner ID Card Number</label>
+                <input 
+                    type="text"
+                    class="form-control"
+                    formControlName = "ownerIdCardNumber"
+                    id="txtOwnerIdCardNumber"
+                    placeholder="Enter owner's id card number">
+            </div>    
+            <div class="form-group">
+                <label for="txtOwnerFirstName">Owner First Name</label>
+                <input 
+                    type="text"
+                    class="form-control"
+                    formControlName = "ownerFirstName"
+                    id="txtOwnerFirstName"
+                    placeholder="Enter owner's first name">
+            </div>
+            <div class="form-group">
+                <label for="txtOwnerLastName">Owner Last Name</label>
+                <input 
+                    type="text"
+                    class="form-control"
+                    formControlName = "ownerLastName"
+                    id="txtOwnerLastName"
+                    placeholder="Enter owner's last name">
+            </div>
+            <div class="form-group">
+                <label for="txtOwnerContactNumber">Owner Contact Number</label>
+                <input 
+                    type="text"
+                    class="form-control"
+                    formControlName = "ownerContactNumber"
+                    id="txtOwnerContactNumber"
+                    placeholder="Enter owner's contact number">
+            </div>
+            <div class="form-group">
+                <label for="txtOwnerEmailAddress">Owner Email Address</label>
+                <input 
+                    type="text"
+                    class="form-control"
+                    formControlName = "ownerEmailAddress"
+                    id="txtOwnerEmailAddress"
+                    placeholder="Enter owner's email address">
+            </div>                                              
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    </form>
+
+<div *ngIf="!droneForm">
+    <p>Drone Form Not Available.</p>
+</div>

@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { HomeComponent } from './home/home.component';
+import { DroneListComponent } from './drone-list/drone-list.component';
+import { DroneDetailComponent } from './drone-detail/drone-detail.component';
+import { AddDroneComponent } from './add-drone/add-drone.component';
+import { UpdateDroneComponent } from './update-drone/update-drone.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {path: 'products', component: ProductListComponent},
-  {path: 'products/:id', component: ProductDetailComponent},
-  {path: 'home', component: HomeComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'}
+  {path: 'login', component: LoginComponent},
+  {path: 'drones', component: DroneListComponent},
+  {path: 'drones/add-drone', component: AddDroneComponent},
+  {path: 'drones/update/:id', component: UpdateDroneComponent},
+  {path: 'drones/:id', component: DroneDetailComponent},
+  {path: '', redirectTo: '/drones', pathMatch: 'full'}
 ];
 
 @NgModule({

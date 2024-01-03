@@ -2,32 +2,35 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { FormsModule } from '@angular/forms';
-import { ConvertToSpacesPipe } from './pipe/convert-to-spaces.pipe';
-import { StarRatingComponent } from './star-rating/star-rating.component';
-import { ProductService } from './services/product.service';
+import { DroneListComponent } from './drone-list/drone-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DroneService } from './services/drone.service';
+import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { DroneDetailComponent } from './drone-detail/drone-detail.component';
+import { AddDroneComponent } from './add-drone/add-drone.component';
+import { UpdateDroneComponent } from './update-drone/update-drone.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent,
-    ConvertToSpacesPipe,
-    StarRatingComponent,
-    HomeComponent,
-    ProductDetailComponent
+    DroneListComponent,
+    DroneDetailComponent,
+    AddDroneComponent,
+    UpdateDroneComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
-    ProductService
+    DroneService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
