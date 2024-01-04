@@ -15,10 +15,7 @@ export class UpdateDroneComponent implements OnInit{
   droneForm!: FormGroup;
   droneId: number = +this.route.snapshot.paramMap.get('id')!;
 
-  constructor (private formBuilder: FormBuilder, private droneService: DroneService, private router: Router, private route: ActivatedRoute, private authService: AuthService)
-  {
-
-  }
+  constructor (private formBuilder: FormBuilder, private droneService: DroneService, private router: Router, private route: ActivatedRoute, private authService: AuthService){}
 
   ngOnInit(): void{
     this.droneForm = this.formBuilder.group({
