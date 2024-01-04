@@ -9,7 +9,7 @@ import { of } from 'rxjs';
 @Injectable()
 export class DroneService {
 
-    endpoint: string = "http://localhost:8080/api/registrations";
+    endpoint: string = "https://css.teknologija.com/api/registrations";
     token: string | null = "";
 
     constructor(private httpClient: HttpClient, private authService: AuthService) {

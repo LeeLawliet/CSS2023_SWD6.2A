@@ -9,7 +9,7 @@ import { authRes } from "../dto/authRes.dto";
 })
 export class AuthService {
 
-    endpoint: string = "http://localhost:8080/api/auth";
+    endpoint: string = "https://css.teknologija.com/api/auth";
     private accessToken: string | null = null;
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
     isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
