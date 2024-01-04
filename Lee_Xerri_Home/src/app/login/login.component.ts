@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void{
     this.loginForm = this.formBuilder.group ({
-        email: null,
-        password: null
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required]]
     })
   }
 
@@ -35,7 +35,20 @@ export class LoginComponent implements OnInit{
     this.authService.authenticate(employee).subscribe((res: authRes) => {
       console.log(res.accessToken);
       this.authService.setAccessToken(res.accessToken);
-      this.router.navigate(['/drones']);
+      if (employee.email == 'joe.borg@dronereg.com')
+      {
+        employee.role = 'Clerk';
+      }
+      else if (employee.email == 'peter.agius@dronereg.com')
+      {
+        employee.role = 'Manager';
+      }
+      else if (employee.email == 'jane.vella@dronereg.com')
+      {
+        employee.role = 'Admin';
+      }
+
+      this.router.navigate(['/drones'], {state: { employee: employee}});
     });
   }
 }

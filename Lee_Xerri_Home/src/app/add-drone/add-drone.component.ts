@@ -29,13 +29,13 @@ export class AddDroneComponent implements OnInit{
   ngOnInit(): void{
     this.droneForm = this.formBuilder.group ({
         id: null,
-        serialNumber: null,
-        modelId: null,
-        ownerIdCardNumber: null,
-        ownerFirstName: null,
-        ownerLastName: null,
-        ownerContactNumber: null,
-        ownerEmailAddress:null,
+        serialNumber: ['', [Validators.required]],
+        modelId: ['', [Validators.required]],
+        ownerIdCardNumber: ['', [Validators.required]],
+        ownerFirstName: ['', [Validators.required]],
+        ownerLastName: ['', [Validators.required]],
+        ownerContactNumber: ['', [Validators.required]],
+        ownerEmailAddress: ['', [Validators.required, Validators.email]],
     })
   }
 

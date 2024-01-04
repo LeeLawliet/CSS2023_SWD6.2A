@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, tap } from "rxjs";
+import { BehaviorSubject, Observable, catchError, of, tap } from "rxjs";
 import { Employee } from "../dto/emloyee.dto";
 import { authRes } from "../dto/authRes.dto";
 
@@ -11,6 +11,8 @@ export class AuthService {
 
     endpoint: string = "http://localhost:8080/api/auth";
     private accessToken: string | null = null;
+    private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+    isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
     httpHeader = {
         headers: new HttpHeaders({
@@ -27,9 +29,26 @@ export class AuthService {
             tap(response => {
               const accessToken = response.accessToken;
               this.setAccessToken(accessToken);
-            })
+              this.isAuthenticatedSubject.next(true);
+            }),
+            (
+                catchError((error: HttpErrorResponse) : Observable<authRes> => {
+                    window.alert('Error: Problem logging in, check your entries.');
+                    return of();
+                })
+            )   
         );
     }
+
+    logout(): void{
+        this.setAccessToken('');
+        this.isAuthenticatedSubject.next(false);
+    }
+
+    isAuthenticated(): boolean{
+        return this.isAuthenticatedSubject.value;
+    }
+    
 
     setAccessToken(token: string): void {
         this.accessToken = token;

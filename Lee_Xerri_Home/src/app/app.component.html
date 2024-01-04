@@ -10,11 +10,14 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/drones" routerLinkActive="active">Drone List</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="isAuthenticated()">
                     <a class="nav-link" routerLink="/drones/add-drone" routerLinkActive="active">Add Drone</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="isAuthenticated() == false">
                     <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+                </li>
+                <li class="nav-item" *ngIf="isAuthenticated()">
+                    <a class="nav-link" routerLinkActive="active" (click)="logout()">Sign out</a>
                 </li>
             </ul>
         </div>

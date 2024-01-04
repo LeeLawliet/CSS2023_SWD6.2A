@@ -22,14 +22,13 @@ export class UpdateDroneComponent implements OnInit{
 
   ngOnInit(): void{
     this.droneForm = this.formBuilder.group({
-      serialNumber: [''],
-      brandName: [''],
-      modelId: [''],
-      ownerIdCardNumber: [''],
-      ownerFirstName: [''],
-      ownerLastName: [''],
-      ownerContactNumber: [''],
-      ownerEmailAddress: ['']
+      serialNumber: ['', [Validators.required]],
+      modelId: ['', [Validators.required]],
+      ownerIdCardNumber: ['', [Validators.required]],
+      ownerFirstName: ['', [Validators.required]],
+      ownerLastName: ['', [Validators.required]],
+      ownerContactNumber: ['', [Validators.required]],
+      ownerEmailAddress: ['', [Validators.required, Validators.email]]
     });
 
     this.loadDroneDetails();
@@ -51,7 +50,6 @@ export class UpdateDroneComponent implements OnInit{
   submitForm()
   {
     let drone:DroneAddUpdate = this.droneForm.value;
-    console.log(JSON.stringify(drone));
 
     this.droneService.updateDrone(this.droneId, drone).subscribe((res: Drone) => {
       console.log(JSON.stringify(res));

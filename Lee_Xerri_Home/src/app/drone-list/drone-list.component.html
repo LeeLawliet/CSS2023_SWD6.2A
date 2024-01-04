@@ -1,4 +1,8 @@
 <div class="table-responsive mt-3" *ngIf="drones!=null && drones.length>0">
+    <button class="btn btn-primary" (click)="exportToExcel('exported-drone-list')">Export To Excel</button>
+    <br><br>
+    <button class="btn btn-primary" (click)="exportToPDF()">Export To PDF</button>
+    <br>
     <table class="table">
         <thead>
             <tr>
@@ -17,8 +21,8 @@
                 <td>{{drone.ownerIdCardNumber}}</td>
                 <td>{{drone.ownerLastName}}</td>
                 <td><button class="btn btn-primary mt-2" [routerLink]="['/drones', drone.id]">View</button></td>
-                <td><button class="btn btn-success mt-2" (click)="updateDrone(drone.id, drone)">Update</button></td>
-                <td><button class="btn btn-danger  mt-2" (click)="deleteDrone(drone.id)">Delete</button></td>
+                <td><button class="btn btn-success mt-2" (click)="updateDrone(drone.id, drone)" [disabled]="isClerk()">Update</button></td>
+                <td><button class="btn btn-danger  mt-2" (click)="deleteDrone(drone.id)" [disabled]="isClerk() || isManager()">Delete</button></td>
             </tr>
         </tbody>
     </table>

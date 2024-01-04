@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'drones/add-drone', component: AddDroneComponent},
   {path: 'drones/update/:id', component: UpdateDroneComponent},
   {path: 'drones/:id', component: DroneDetailComponent},
-  {path: '', redirectTo: '/drones', pathMatch: 'full'}
+  {path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({

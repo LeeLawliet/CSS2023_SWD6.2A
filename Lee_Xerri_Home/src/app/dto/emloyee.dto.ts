@@ -3,15 +3,18 @@ export class Employee {
     private _id: number;
     private _email: string;
     private _password: string;
+    private _role: string;
 
     constructor (
         id: number,
         email: string,
         password: string,
+        role: string
     ) {
         this._id = id;
         this._email = email,
-        this._password = password
+        this._password = password,
+        this._role = role
     }
 
     public get id(): number {
@@ -36,5 +39,13 @@ export class Employee {
 
     public set password(password: string) {
         this._password = password;
+    }
+
+    public get role(): string {
+        return this._role;
+    }
+
+    public set role(role: string) {
+        this._role = role;
     }
 }
