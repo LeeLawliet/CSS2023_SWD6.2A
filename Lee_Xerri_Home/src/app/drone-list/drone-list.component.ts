@@ -59,9 +59,8 @@ export class DroneListComponent implements OnInit{
       {
         this.droneService.deleteDrone(id).subscribe((res: Drone[]) => {
           this.drones = res;
+          this.initialiseDrones();
         });
-
-        this.initialiseDrones();
       }
   }
 

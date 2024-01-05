@@ -13,7 +13,6 @@ export class DroneService {
     token: string | null = "";
 
     constructor(private httpClient: HttpClient, private authService: AuthService) {
-        
     }
 
     private getHeaders(): HttpHeaders {
@@ -39,8 +38,7 @@ export class DroneService {
                 window.alert('Error: Problem adding drone, check your entries.');
                 return of();
             })
-        );;
-        
+        );
     }
 
     updateDrone(id: number, droneToUpdate: DroneAddUpdate): Observable<Drone> {

@@ -7,7 +7,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="isAuthenticated()">
                     <a class="nav-link" routerLink="/drones" routerLinkActive="active">Drone List</a>
                 </li>
                 <li class="nav-item" *ngIf="isAuthenticated()">

@@ -17,18 +17,35 @@ export class UpdateDroneComponent implements OnInit{
 
   constructor (private formBuilder: FormBuilder, private droneService: DroneService, private router: Router, private route: ActivatedRoute, private authService: AuthService){}
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.droneForm = this.formBuilder.group({
-      serialNumber: ['', [Validators.required]],
-      modelId: ['', [Validators.required]],
-      ownerIdCardNumber: ['', [Validators.required]],
-      ownerFirstName: ['', [Validators.required]],
-      ownerLastName: ['', [Validators.required]],
-      ownerContactNumber: ['', [Validators.required]],
-      ownerEmailAddress: ['', [Validators.required, Validators.email]]
+      id: [null],
+      serialNumber: ['', Validators.required],
+      modelId: ['', Validators.required],
+      ownerIdCardNumber: ['', [Validators.required, this.validIdCard]],
+      ownerFirstName: ['', Validators.required],
+      ownerLastName: ['', Validators.required],
+      ownerContactNumber: ['', [Validators.required, this.validContactNumber]],
+      ownerEmailAddress: ['', [Validators.required, Validators.email]],
     });
 
     this.loadDroneDetails();
+  }
+
+  validIdCard(control: any) {
+    const pattern = /^[0-9]+\s*[A-Za-z]$/;
+    return pattern.test(control.value) ? null : { ownerIdCardNumber: true };
+  }
+
+  validContactNumber(control: any) {
+    const pattern = /^[0-9]+$/;
+    const value = control.value;
+
+    return pattern.test(value) && +value >= 0 && value.length >= 8 ? null : { ownerContactNumber: true };
+  }
+
+  hasError(controlName: string, errorName: string) {
+    return this.droneForm.controls[controlName].hasError(errorName);
   }
 
   loadDroneDetails(): void {
@@ -46,12 +63,15 @@ export class UpdateDroneComponent implements OnInit{
 
   submitForm()
   {
-    let drone:DroneAddUpdate = this.droneForm.value;
+    if (this.droneForm.valid) {
+      let drone:DroneAddUpdate = this.droneForm.value;
 
-    this.droneService.updateDrone(this.droneId, drone).subscribe((res: Drone) => {
-      console.log(JSON.stringify(res));
-    });
+      this.droneService.updateDrone(this.droneId, drone).subscribe((res: Drone) => {
+        console.log(JSON.stringify(res));
+      });
 
-    this.router.navigate(['/drones']);
+      this.router.navigate(['/drones']);
+    }
+    
   }
 }
