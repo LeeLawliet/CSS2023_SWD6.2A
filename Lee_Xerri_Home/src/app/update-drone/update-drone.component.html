@@ -31,7 +31,7 @@
                     placeholder="Enter owner's id card number"
                     [value]="droneForm.get('ownerIdCardNumber')?.value">
             </div>   
-            <div *ngIf="hasError('ownerIdCardNumber', 'ownerIdCardNumber')" style="color: #FF0000">Invalid ID Card</div> 
+            <div *ngIf="submitted && hasError('ownerIdCardNumber', 'ownerIdCardNumber')" style="color: #FF0000">Invalid ID Card</div> 
             <div class="form-group">
                 <label for="txtOwnerFirstName">Owner First Name</label>
                 <input 
@@ -62,7 +62,7 @@
                     placeholder="Enter owner's contact number"
                     [value]="droneForm.get('ownerContactNumber')?.value">
             </div>
-            <div *ngIf="hasError('ownerContactNumber', 'ownerContactNumber')" style="color: #FF0000">Invalid Contact Number</div>
+            <div *ngIf="submitted && hasError('ownerContactNumber', 'ownerContactNumber')" style="color: #FF0000">Invalid Contact Number</div>
             <div class="form-group">
                 <label for="txtOwnerEmailAddress">Owner Email Address</label>
                 <input 
@@ -73,7 +73,7 @@
                     placeholder="Enter owner's email address"
                     [value]="droneForm.get('ownerEmailAddress')?.value">
             </div>
-            <div *ngIf="hasError('ownerEmailAddress', 'email')" style="color: #FF0000">Invalid Email Address</div>                                   
+            <div *ngIf="submitted && hasError('ownerEmailAddress', 'email')" style="color: #FF0000">Invalid Email Address</div>                                   
         </fieldset>
 
         <button type="submit" class="btn btn-primary mt-2">Submit</button>

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AddDroneComponent implements OnInit{
   droneForm!: FormGroup;
+  submitted: boolean = false;
 
   constructor (private formBuilder: FormBuilder, private droneService: DroneService, private router: Router)
   {
@@ -57,6 +58,8 @@ export class AddDroneComponent implements OnInit{
 
   submitForm()
   {
+    this.submitted = true;
+    
     if (this.droneForm.valid) {
       let drone:DroneAddUpdate = this.droneForm.value;
       console.log(JSON.stringify(drone));

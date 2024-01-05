@@ -14,6 +14,7 @@ import { AuthService } from '../services/auth.service';
 export class UpdateDroneComponent implements OnInit{
   droneForm!: FormGroup;
   droneId: number = +this.route.snapshot.paramMap.get('id')!;
+  submitted: boolean = false;
 
   constructor (private formBuilder: FormBuilder, private droneService: DroneService, private router: Router, private route: ActivatedRoute, private authService: AuthService){}
 
@@ -63,6 +64,8 @@ export class UpdateDroneComponent implements OnInit{
 
   submitForm()
   {
+    this.submitted = true;
+    
     if (this.droneForm.valid) {
       let drone:DroneAddUpdate = this.droneForm.value;
 
